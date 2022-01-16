@@ -78,3 +78,4 @@ El proyecto se puede cargar facilmente con IntelliJ eligiendo "abrir proyecto" y
 ## Compilar y distribuir
 
 El ejecutable `cleanDistribution.bat` generará un ZIP con la distribución en `./meh-javafx/build/distZip/`
+NOTA: Java 11+ ya no incluye JavaFX, por lo que se recomienda compilar con Java 1.8
