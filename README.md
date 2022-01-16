@@ -6,6 +6,9 @@ My Eight Hours (MEH) es una aplicación que ayuda a controlar el tiempo trabajad
 * Tiempo a trabajar por día y semana.
 * Desfase de horas trabajadas por día y semana.
 
+
+![Ventana de login y de progreso](docs/login_and_progress.png)
+
 ## Uso
 
 Solo hay que introducir las credenciales del Portal-del-empleado en el formulario de login de MEH, que se abre al iniciar.
