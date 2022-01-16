@@ -20,7 +20,7 @@ Es posible configurar la aplicación por medio del fichero meh.properties que se
 
 | Clave          |         Defecto         |                                                                                                                              Descripción |
 |----------------|:-----------------------:|-----------------------------------------------------------------------------------------------------------------------------------------:|
-| user           | TELTRONICDOM\\\\usuario |                     Nombre de usuario idéntico al usado en el Portal-del-empleado. La contra-barra debe escaparse con otra contra-barra. |
+| user           | DOM\\\\usuario |                     Nombre de usuario idéntico al usado en el Portal-del-empleado. La contra-barra debe escaparse con otra contra-barra. |
 | minimizetotray |          false          | Al minimizar la ventana de progreso, se oculta la ventana y se muestra un icono en la bandeja del sistema. Valores posibles: true, false |
 | log            |          info           |                                          Define el nivel de log que se escribe. Valores posibles: trace, debug, info, warn, error, fatal |
 
