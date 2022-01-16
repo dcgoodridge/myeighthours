@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" name="MehLog" packages="">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d [%t] %-5level %logger{36} - %msg%n"
+                    charset="UTF-8" />
+        </Console>
+        <RollingFile
+                name="RollingFile"
+                fileName="${sys:user.home}/.meh/logs/meh.log"
+                filePattern="$${sys:user.home}/.meh/logs/meh-%i.log">
+            <PatternLayout
+                    pattern="%d [%t] %-5level %logger{36} - %msg%n"
+                    charset="UTF-8" />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="ERROR">
+            <!-- Only events at DIAG level or more specific are sent to the console. -->
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

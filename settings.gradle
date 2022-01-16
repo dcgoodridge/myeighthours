@@ -1,0 +1,7 @@
+rootProject.name = 'meh'
+
+include ':meh-exe'
+project(':meh-exe').projectDir = new File('./meh-exe')
+
+include ':meh-javafx'
+project(':meh-javafx').projectDir = new File('./meh-javafx')

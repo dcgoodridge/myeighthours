@@ -1,0 +1,15 @@
+*.iml
+.idea/
+out/
+/.gradle/
+local.properties
+*.ipr
+*.iws
+build
+.idea_modules/
+*.log
+/meh.bundle
+/meh-exe/launch4j-gen.xml
+/releases
+/meh-origin-repo/meh.bundle
+/origin-repo

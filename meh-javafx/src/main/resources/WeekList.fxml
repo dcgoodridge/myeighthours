@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="0" minWidth="0" prefHeight="300" prefWidth="750.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myeighthours.viewcontroller.WeekListController">
+    <children>
+      <HBox spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefWidth="68.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="weekBackward" alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" mnemonicParsing="false" prefHeight="25" prefWidth="25" style="-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-background-radius: 5, 5, 4, 3;">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CARET_LEFT" glyphStyle="-fx-fill: #555555" size="14px" />
+                     </graphic>
+                  </Button>
+               </children>
+               <children>
+                  <Button fx:id="weekForward" alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" mnemonicParsing="false" prefHeight="25" prefWidth="25" style="-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-background-radius: 5, 5, 4, 3;">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CARET_RIGHT" glyphStyle="-fx-fill: #555555" size="14px" />
+                     </graphic>
+                  </Button>
+               </children>
+               <children>
+                  <Button fx:id="fichajeListButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" mnemonicParsing="false" prefHeight="25" prefWidth="25" style="-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-background-radius: 5, 5, 4, 3;">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="BARS" glyphStyle="-fx-fill: #555555" size="14px" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="L" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="M" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="X" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="J" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="V" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="S" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" prefWidth="40" style="-fx-font-size: 12" text="D" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
+         </children>
+         <padding>
+            <Insets right="8.0" />
+         </padding>
+      </HBox>
+        <ListView fx:id="listView" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

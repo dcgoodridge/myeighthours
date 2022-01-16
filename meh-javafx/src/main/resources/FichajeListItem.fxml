@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<HBox maxWidth="Infinity" minWidth="0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="labelDireccion" maxWidth="Infinity" minWidth="0" text="Entrada" HBox.hgrow="ALWAYS"/>
+        <Label fx:id="labelFecha" alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="Infinity" minWidth="100" text="2017 Mar 03"/>
+        <Label fx:id="labelHora" alignment="CENTER" contentDisplay="RIGHT" maxHeight="Infinity" minWidth="50" text="09:41"/>
+        <Label fx:id="labelNotSync" maxHeight="Infinity" minWidth="20" alignment="CENTER_RIGHT">
+            <graphic>
+                <FontAwesomeIconView glyphName="EDIT" size="14px" glyphStyle="-fx-fill: #555555"/>
+            </graphic>
+        </Label>
+    </children>
+</HBox>

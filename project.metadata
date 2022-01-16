@@ -1,0 +1,4 @@
+groupId = 'myeighthours'
+artifactId = 'myeighthours-javafx'
+version = '0.30b'
+versionExe = '0.30.0.0'

@@ -1,0 +1,151 @@
+import com.sun.xml.internal.ws.util.xml.XmlUtil
+import groovy.xml.StreamingMarkupBuilder
+import groovy.util.slurpersupport.GPathResult
+
+import groovy.xml.DOMBuilder
+
+ext {
+    output = ["$buildDir/meh.exe","$buildDir/meh64.exe"]
+}
+
+def winrunPath = projectDir.path + "/winrun4J9"
+
+ext.exeVersion = rootProject.metadata.versionExe
+
+task clean {
+    group 'PIPELINE'
+    delete "$buildDir"
+}
+
+task adaptRcFile {
+    def rcFilePath = buildDir.path + "/exe/Resources.rc"
+    def fileVersion = rootProject.version
+    def myFile = new File(rcFilePath)
+    doLast {
+        println "Adaptando fichero  "+rcFilePath
+        def exeVersionCommas = exeVersion.replace(".",",")
+        processFileInplace(myFile) { text ->
+            text = text.replaceAll("FILEVERSION.*1,0,0,0", "FILEVERSION "+exeVersionCommas)
+            text = text.replaceAll("PRODUCTVERSION.*1,0,0,0", "PRODUCTVERSION "+exeVersionCommas)
+            text = text.replaceAll("VALUE \"FileVersion\",.*", "VALUE \"FileVersion\", \""+exeVersion+"\\\\0\"")
+            text = text.replaceAll("VALUE \"ProductVersion\",.*", "VALUE \"ProductVersion\", \""+exeVersion+"\\\\0\"")
+        }
+    }
+}
+adaptRcFile.dependsOn('winrun4jPrepareFiles')
+
+String serializeXml(GPathResult xml){
+    XmlUtil.serialize(new StreamingMarkupBuilder().bind {
+        mkp.yield xml
+    } )
+}
+
+def processFileInplace(file, Closure processText) {
+    def text = file.text
+    file.write(processText(text))
+}
+
+task buildExe {
+    dependsOn('buildExeWinrun4j')
+}
+
+task buildExeWinrun4j {
+    doLast {
+        copy {
+            from buildDir.path + "/exe"
+            into buildDir.path
+            include('meh.exe')
+            include('meh64.exe')
+        }
+    }
+}
+buildExeWinrun4j.dependsOn('winrun4jEmbedResources')
+
+task winrun4jEmbedResources {
+    def exeTempPath = buildDir.path + "/exe"
+    doLast {
+        buildDir = new File("$buildDir")
+        buildDir.mkdirs()
+        exec {
+            workingDir = exeTempPath
+            commandLine = ['cmd', '/C', 'winrunEmbedResources.bat']
+        }
+    }
+}
+winrun4jEmbedResources.dependsOn('winrun4jPrepareFiles')
+winrun4jEmbedResources.dependsOn('adaptRcFile')
+
+task winrun4jPrepareFiles {
+    def xmlGenPath = projectDir.path
+    def exeTempPath = buildDir.path + "/exe"
+    def srcPath = projectDir.path + "/src"
+    doLast {
+        copy {
+            from winrunPath
+            into exeTempPath
+            include('WinRun4J.exe')
+            rename('WinRun4J.exe', 'meh.exe')
+        }
+        copy {
+            from winrunPath
+            into exeTempPath
+            include('WinRun4J64.exe')
+            rename('WinRun4J64.exe', 'meh64.exe')
+        }
+        copy {
+            from srcPath
+            into exeTempPath
+            include('winrun4j.ini')
+            rename('winrun4j.ini', 'meh.ini')
+        }
+        copy {
+            from srcPath
+            into exeTempPath
+            include('winrun4j64.ini')
+            rename('winrun4j64.ini', 'meh64.ini')
+        }
+        copy {
+            from srcPath
+            into exeTempPath
+            include('exe.ico')
+        }
+		copy {
+            from srcPath
+            into exeTempPath
+            include('splash.jpg')
+        }
+        copy {
+            from winrunPath
+            into exeTempPath
+            include('RCEDIT.exe')
+        }
+        copy {
+            from winrunPath
+            into exeTempPath
+            include('RCEDIT64.exe')
+            include('winrunEmbedResources.bat')
+        }
+        copy {
+            from srcPath
+            into exeTempPath
+            include('winrunEmbedResources.bat')
+        }
+        copy {
+            from projectDir.path + "/goRC"
+            into exeTempPath
+            include('GoRC.exe')
+        }
+        copy {
+            from projectDir.path + "/resourcehacker"
+            into exeTempPath
+            include('ResourceHacker.exe')
+            include('ResourceHacker.def')
+        }
+        copy {
+            from srcPath
+            into buildDir.path + "/exe"
+            include('Resources.rc')
+        }
+
+    }
+}

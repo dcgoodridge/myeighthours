@@ -1,0 +1,218 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+plugins {
+  id "java"
+  id "jacoco"
+  id "org.sonarqube" version "2.6"
+  id "de.fuerstenau.buildconfig" version '1.1.8'
+  //id "proguard-gradle" version "5.3.3"
+}
+
+repositories {
+	jcenter()
+}
+
+version = metadata.version
+
+sonarqube {
+    properties {
+        property "sonar.projectName", metadata.artifactId
+        property "sonar.projectKey", metadata.groupId+":"+metadata.artifactId
+        property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/testunit.exec"
+    }
+}
+
+test {
+  ignoreFailures = true
+}
+
+sourceCompatibility = 8
+targetCompatibility = 8
+compileJava.options.encoding = 'UTF-8'
+
+sourceSets {
+    testintegration {
+        java.srcDir file('src/testintegration/java')
+        resources.srcDir file('src/testintegration/resources')
+    }
+
+    testunit {
+        java.srcDir file('src/testunit/java')
+        resources.srcDir file('src/testunit/resources')
+    }
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy/MM/dd HH:mm')
+    return formattedDate
+}
+
+task compile {
+    dependsOn classes
+    group 'PIPELINE'
+}
+
+task testunit(type: Test) {
+    dependsOn compile
+	group 'PIPELINE'
+    description '2.1 testunit'
+    testClassesDir = sourceSets.testunit.output.classesDir
+    classpath = sourceSets.testunit.runtimeClasspath
+    jacoco.destinationFile = file("$buildDir/jacoco/${name}.exec")
+}
+
+task testintegration(type: Test) {
+    dependsOn compile
+    group 'PIPELINE'
+    testClassesDir = sourceSets.testintegration.output.classesDir
+    classpath = sourceSets.testintegration.runtimeClasspath
+}
+
+test {
+    group 'PIPELINE'
+    dependsOn testunit
+}
+
+//El ide intellij solo pre-carga dependencias a 4 'scopes' fijos (compile, test, provided ,??)
+//El plugin Java asocia testCompile a idea-scope TEST, pero nuestras especificas 'testunitCompile' y la otra, no.
+apply plugin: 'idea'
+idea {
+    module {
+        scopes.TEST.plus += [configurations.testunitCompile, configurations.testintegrationCompile]
+    }
+}
+
+configurations {
+    testunitCompile.extendsFrom compile
+    testintegrationCompile.extendsFrom compile
+}
+
+ext.seleniumVersion = '3.8.1'
+
+dependencies {
+    //Log SLF4J API
+    compile 'org.slf4j:slf4j-api:1.7.6'
+
+    //log implementation (only for runners: javafx, android-app, test, etc..)
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.4'
+    compile 'org.apache.logging.log4j:log4j-api:2.4'
+    compile 'org.apache.logging.log4j:log4j-core:2.4'
+
+    compile 'org.seleniumhq.selenium:htmlunit-driver:2.29.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
+    compile group: 'com.codeborne', name: 'phantomjsdriver', version: '1.4.4'
+    compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.29'
+    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.9'
+    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+    compile 'joda-time:joda-time:2.10'
+    compile group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+    compile 'net.java.dev.jna:jna:4.5.0'
+    compile 'net.java.dev.jna:jna-platform:4.5.0'
+
+    testunitCompile sourceSets.main.output
+    testunitCompile 'junit:junit:4.12'
+    testunitCompile 'org.hamcrest:hamcrest-library:1.3'
+
+    testintegrationCompile sourceSets.main.output
+    testintegrationCompile 'org.hamcrest:hamcrest-all:1.3'
+    testintegrationCompile 'junit:junit:4.12'
+    testintegrationCompile 'org.seleniumhq.selenium:selenium-api:2.53.0'
+    testintegrationCompile 'org.seleniumhq.selenium:selenium-java:2.53.0'
+    testintegrationCompile 'com.github.detro.ghostdriver:phantomjsdriver:1.0.1'
+}
+
+jar {
+    group 'PIPELINE'
+    def manifestClasspath = configurations.runtime.files.collect { 'libs/'+it.name }.join(' ')
+    def currentJvm = org.gradle.internal.jvm.Jvm.current()
+    def gradleVersion = gradle.gradleVersion
+    manifest {
+        attributes(
+                'Main-Class': 'myeighthours.Main',
+                'Implementation-Version': metadata.version,
+                'Created-By': "Gradle "+ gradleVersion +' (JVM: '+ currentJvm+')',
+                'Class-Path': manifestClasspath,
+                'Build-Date': new Date().getTime()
+        )
+    }
+    archiveName "meh.jar"
+}
+
+task artifact {
+    dependsOn jar
+    group 'PIPELINE'
+}
+
+task distribution {
+    group 'PIPELINE'
+	def workingDirString = projectDir.path + "/src/main/extra"
+	def zipFileName = 'meh-'+metadata.version+'-dist.7z'
+	def zipFileDir = buildDir.path+'/distZip'
+    doLast {
+        copy {
+            from jar.archivePath
+            into "$buildDir/dist/libs"
+        }
+		buildDir = new File(zipFileDir)
+		buildDir.mkdirs()
+		exec {
+			workingDir = workingDirString
+			commandLine = ['cmd', '/C', 'distributionZip.bat' , zipFileDir+'/'+zipFileName]
+		}
+		
+    }
+}
+distribution.dependsOn "distributionLibs"
+distribution.dependsOn "distributionExe"
+distribution.dependsOn "copyDrivers"
+distribution.dependsOn "copyConfFolder"
+
+task distributionLibs(type: Copy) {
+    group 'PIPELINE'
+    ext.libFolder = "$buildDir/dist/libs"
+    into libFolder
+    from { project.configurations.runtime }
+    from { project.jar }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+task distributionExe(type: Copy) {
+    group 'PIPELINE'
+    dependsOn ':meh-exe:buildExe'
+    into "$buildDir/dist"
+    from { project(":meh-exe").output }
+}
+
+task copyDrivers() {
+    def driverFolder = "$buildDir/dist/drivers"
+    def zipFileName = 'meh-'+metadata.version+'-dist.7z'
+    doLast {
+		copy {
+            from "$project.projectDir/drivers"
+            into "$buildDir/dist/drivers"
+            include '/phantomjs-2.1.1-windows/**'
+        }
+    }
+}
+
+task copyConfFolder(type: Copy) {
+    into "$buildDir/dist/"
+    from "$project.projectDir/src/main/conf"
+    include '**/*.*'
+}
+
+buildConfig {
+    packageName = 'myeighthours'
+    buildConfigField 'long', 'BUILD_UNIXTIME', System.currentTimeMillis() + 'L'
+    buildConfigField 'String', 'METADATA_VERSION', metadata.version
+}

@@ -1,0 +1,1 @@
+ext.metadata = new ConfigSlurper().parse(file('project.metadata').toURI().toURL())

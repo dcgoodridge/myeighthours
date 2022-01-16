@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox alignment="CENTER" maxWidth="Infinity" minWidth="0" prefHeight="34.0" prefWidth="650.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox fx:id="weekHbox" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: rgba(0,0,0,0.1);" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelWeek_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 12" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelWeek_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelWeek_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets left="5.0" right="5.0" />
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay0_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay0_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay0_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay1_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay1_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay1_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay2_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay2_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay2_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay3_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay3_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay3_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay4_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay4_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay4_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay5_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay5_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay5_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="0" prefHeight="30.0" prefWidth="40.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="labelDay6_num" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" style="-fx-font-size: 14" text="42" HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0">
+                    <children>
+                        <Label fx:id="labelDay6_text0" alignment="CENTER_RIGHT" maxWidth="Infinity" style="-fx-font-size: 12" text="8h15m" />
+                        <Label fx:id="labelDay6_text1" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxWidth="Infinity" style="-fx-font-size: 12" text="+16m" />
+                    </children>
+                </VBox>
+            </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+        </HBox>
+    </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</HBox>

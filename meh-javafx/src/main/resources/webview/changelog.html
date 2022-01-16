@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<title></title>
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<xmp theme="meh" style="display:none;">
+
+## 0.29 (2019-dic-23)
+
+* Actualizado de acuerdo al calendario laboral de 2020
+* Añadidos controles de semana anterior y siguiente en la vista de calendario
+
+## 0.28 (2019-oct-19)
+
+* Actualizada la lógica de cómputo de fichajes de acuerdo a la "Instrucción sobre el registro de jornada" vigente desde el 16 de Octubre de 2019.
+
+## 0.27 (2019-ene-22)
+
+* Corregido caso en el que se almacenaban fichajes dobles.
+
+## 0.26 (2018-dic-19)
+
+* Actualizado de acuerdo al calendario laboral de 2019
+
+## 0.25 (2018-sep-10)
+
+* El driver por defecto para el webscrap ahora es HtmlUnit.
+* Añadida ventana Licencias de Código Abierto
+* Pequeños ajustes y mejoras de código.
+* Corrección de error: El dia 14 Sept 2018 ahora se marca como jornada reducida.
+
+## 0.24 (2018-jul-13)
+
+* Mejorada legibilidad de logs
+* Fichero de logs generado en UTF8
+* Mejorada robustez en webscrap para casos de fichajes de tipos desconocidos
+
+## 0.23 (2018-jun-14)
+
+* Eliminado retardo entre fin de webscrap y actualización de barra de progreso
+* Añadida compatibilidad con entradas de fichajes de tipo autogeneradas de viaje
+* Añadida protección contra lectura de entradas desconocidas de fichajes
+
+## 0.22 (2018-abr-05)
+
+* Actualizado tiempo de fichaje de jornada estándar de acuerdo al "Plan Igualdad 2017": Ahora es de 8h 15min
+* Corregido fallo al generar las semanas de la vista de calendario
+
+## 0.21 (2018-feb-19)
+
+* Correcciones en ventana de ayuda.
+* La ventana 'calendario' ahora es modal
+* Traducción de literales al Castellano
+* Corregida errata en changelog de v.0.13
+* Refactorización: Código costoso ejecutados en hilos para no bloquear UI
+* Minor fixes
+* Fix: Los fichajes leidos de texto tipo "12:xx" se almacenaban como "00:xx".
+
+## 0.20 (2018-feb-09)
+
+* Añadido log de versión al arranque
+* Binarios Winrun4j actualizados (@dcgoodridge fork)
+* Añadido log de aviso de trigger Manual (usuario) o Automatico (MehService)
+* Añadido aviso en el hint del tray en caso de error.
+
+## 0.19 (2018-ene-22)
+
+* Mejorado lanzador *.exe (WinRun4J modificado): Se detectan instalaciones JRE y JDK
+
+## 0.18 (2018-ene-17)
+
+* Añadidos nombres a los threads para logs
+* Añadida imagen de splash de carga de JVM
+* Actualizadas librerias de Selenium
+* Añadido modo "debug" true/false
+* Añadida opción de driver para el webscraper "HTMLUNIT"
+
+## 0.17 (2017-dic-20)
+
+* Correccion a color de dia actual en WeekView
+* Eliminado resaltado de semana en WeekView
+* En weekview el dia actual siempre muestra desfase 0h00m y gris claro
+* Al minimizar a Tray, el menú-corredero vuelve a su posición inicial
+
+## 0.16 (2017-dic-18)
+
+* Añadida configuración de log en la Ayuda
+* Añadidas jornadas festivas de 2017
+* Añadidas jornadas festivas, reducidas y recuperar de 2018
+* Mejorada calidad de icono para resoluciones bajas
+* Mejoras en el centrado de las ventanas abiertas
+* Mejoras representación Weekview
+* Correcciones de página de ayuda
+
+## 0.15 (2017-dic-13)
+
+* Añadido apartado de changelog
+* Añadido apartado de ayuda
+* Mejoras en el aspecto de la ventana WeekView
+
+## 0.14 (2017-dic-12)
+
+* Pequeñas correcciones
+* Mejoras de representación del WeekView
+* Corrección a cálculos de dias especiales
+
+## 0.13 (2017-dic-09)
+
+* Migración de librerias de java.time a joda-time
+* Correcciones al lanzador exe
+* Mejoras en logs
+* Añadida vista de desfase de fichajes en el WeekView
+* Renombrados literales "crawler" por "scraper"
+* Nueva base de datos cache de fichajes de usuario
+
+## 0.12 (2017-nov-27)
+
+* Configuración de nivel de log en meh.properties
+* Mejora logs
+* Correcciones de cálculos de fechas
+* Renombrados literales "crawler" por "scraper"
+* Reorganización de fuentes en meh-exe
+* Mejoras en la generación de distribución
+* Anadir dialogo de error java-not-found para meh.exe 32-64
+* Nuevo lanzadores *.exe (32b y 64b) generados con Winrun4J
+
+## 0.11 (2017-nov-06)
+
+* Notificación de Bloq-Mayusc activado en campo de password
+* Pequeñas correcciones
+
+## 0.10 (2017-nov-03)
+
+* Mejora de notificaciones en Webcrawl
+* Ventana About es ahora modal
+* Mejora: El boton "Refresh" se lanza inmediatamente
+* Mejora: Ampliar iconos de botones
+
+## 0.9 (2017-nov-02)
+
+* Corrección: Añadida imagen que faltaba de About
+
+## 0.8.1 (2017-oct-31)
+
+* Ajustes en niveles de logs
+
+## 0.8 (2017-oct-30)
+
+* Añadida ventana About
+* Añadido boton "Refresh" para forzar un webcrawl
+* Corrección: El webcrawl ya no bloquea la interfaz gráfica
+* Añadidos iconos con fuente FontAwesome
+* Eliminadas opciones de Driver de crawler, y movidas a properties
+* Mejora: Ahora se loguean las excepciones no controladas
+* Boton "..." de opciones en panel desplazable
+* Mejora: La hora de salida se muestra en Tooltip de TrayIcon
+* Mejora: La posicion de la ventana después del login aparece en la posicion que tenia la de login
+* Mejora: La ventana minimizada a TrayIcon, al maximizar, recupera su posicion anterior
+* Mejora: Añadidos metadatos al binario exe.
+
+## 0.7 (2017-oct-26)
+
+* Añadida opcion de minimizar a Tray
+* Añadido TrayIcon
+* Añadida simulación de Webcrawler
+
+## 0.6 (2017-jun-16)
+
+* Mejora: Ajustes en la predicción de tiempo de descanso en cantina
+* Mejorada lógica de cálculo de tiempo trabajado
+* Corregido: Tooltip antes del primer webcrawl ahora no se ve vacio.
+
+## 0.5.1 (2017-jun-09)
+
+* Correcciones: Añadidos dias de jornada reducida de 2017
+
+## 0.5 (2017-jun-08)
+
+* Correcciones y mejoras
+* Mejora: Logs almacenados en directorio temporal de usuario y modo rolling-file
+
+## 0.4
+
+* Campo de password gana foco al inicio
+
+## 0.3
+
+* La versión de MEH se muestra en los títulos de las ventanas
+* La tecla intro en la ventana de login ejecuta el login
+* Algoritmo modificado: Se consideran 8h 10min de trabajo y 50min para comer.
+
+## 0.2
+
+* Añadido jsphantom como WebCrawler 
+* Corrección en la barra de progreso
+
+## 0.1
+
+* Primera version
+
+</xmp>
+
+<script src="v/0.2/strapdown.js"></script>
+</html>

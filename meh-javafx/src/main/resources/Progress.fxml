@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" minWidth="0" prefWidth="220" prefHeight="0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myeighthours.viewcontroller.ProgressController">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <TextField fx:id="timeStart" disable="true" maxWidth="Infinity" text="-" GridPane.hgrow="ALWAYS" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="0" />
+        <TextField fx:id="timeFinish" alignment="CENTER_RIGHT" disable="true" maxWidth="Infinity" GridPane.hgrow="ALWAYS" text="-" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="0" />
+        <ProgressBar fx:id="progressBar" maxWidth="Infinity" minWidth="0" progress="0" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+        <fx:include fx:id="progressFooterLayout" source="ProgressFooter.fxml" maxWidth="Infinity" GridPane.hgrow="ALWAYS" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
+    </children>
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+</GridPane>

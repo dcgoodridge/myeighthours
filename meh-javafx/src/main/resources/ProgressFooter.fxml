@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+
+<AnchorPane maxWidth="Infinity" minWidth="-Infinity" prefWidth="200" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myeighthours.viewcontroller.ProgressFooterController">
+    <children>
+        <HBox fx:id="progressFooterLeft" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="infoThread" alignment="BOTTOM_LEFT" maxHeight="Infinity" maxWidth="Infinity" text="" HBox.hgrow="NEVER" />
+                <Label fx:id="espaciadorLeft" alignment="CENTER_LEFT" maxHeight="Infinity" maxWidth="Infinity" text="" HBox.hgrow="ALWAYS" />
+                <Button fx:id="moreButton" contentDisplay="CENTER" alignment="CENTER_RIGHT" text="..." prefHeight="25" prefWidth="25" mnemonicParsing="false" style="-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color; -fx-background-insets: 0 0 -1 0, 0, 1, 2; -fx-background-radius: 5, 5, 4, 3;" />
+            </children>
+        </HBox>
+        <HBox fx:id="progressFooterRight" spacing="10" translateY="50" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="espaciadorRight" alignment="CENTER_LEFT" maxHeight="Infinity" maxWidth="Infinity" text="" HBox.hgrow="ALWAYS" />
+
+                <Button fx:id="calendarButton" contentDisplay="CENTER" alignment="CENTER" prefHeight="25" prefWidth="25" mnemonicParsing="false">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CALENDAR" size="14px" glyphStyle="-fx-fill: #555555" />
+                    </graphic>
+                </Button>
+
+                <Button fx:id="refreshButton" contentDisplay="CENTER" alignment="CENTER" prefHeight="25" prefWidth="25" mnemonicParsing="false">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="REFRESH" size="14px" glyphStyle="-fx-fill: #555555" />
+                    </graphic>
+                </Button>
+
+                <Button fx:id="aboutButton" contentDisplay="CENTER" alignment="CENTER" prefHeight="25" prefWidth="25" mnemonicParsing="false">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="INFO" size="14px" glyphStyle="-fx-fill: #555555" />
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

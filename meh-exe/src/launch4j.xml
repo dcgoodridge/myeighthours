@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <headerType>gui</headerType>
+  <outfile>build/meh.exe</outfile>
+  <jar>../build/libs/meh.jar</jar>
+  <dontWrapJar>false</dontWrapJar><!-- poner esto a false para que el JAR sea embebido en el EXE -->
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>true</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <!-- Admin rights to write to Especial windows folders (/program files) -->
+  <!-- <manifest>exe.manifest</manifest> -->
+  <manifest></manifest>
+  <icon>exe.ico</icon>
+    <classPath>
+    <mainClass>myeighthours.Main</mainClass>
+  </classPath>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+  <versionInfo>
+    <fileVersion>0.0.0.0</fileVersion>
+    <txtFileVersion>0.0.0.0</txtFileVersion>
+    <fileDescription>My Eight Hours</fileDescription>
+    <copyright>David C. Goodridge</copyright>
+    <productVersion>0.0.0.0</productVersion>
+    <txtProductVersion>0.0.0.0</txtProductVersion>
+    <productName>MEH</productName>
+    <companyName>MEH</companyName>
+    <internalName>MEH</internalName>
+    <originalFilename>meh.exe</originalFilename>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+  <messages>
+    <startupErr>startupErr</startupErr>
+    <bundledJreErr>bundledJreErr</bundledJreErr>
+    <jreVersionErr>jreVersionErr</jreVersionErr>
+    <launcherErr>launcherErr</launcherErr>
+    <!-- Used by console header only. -->
+    <instanceAlreadyExistsMsg>instanceAlreadyExistsMsg</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>
