@@ -75,3 +75,6 @@ Tomando el usuario y contraseña del Portal-del-empleado, MEH navega de forma in
 Se recomienda tener instalado la Java Dev Kit (JDK) 1.8. Como IDE se recomienda IntelliJ IDEA.
 El proyecto se puede cargar facilmente con IntelliJ eligiendo "abrir proyecto" y seleccionando el settings.gradle del directorio raiz.
 
+## Compilar y distribuir
+
+El ejecutable `cleanDistribution.bat` generará un ZIP con la distribución en `./meh-javafx/build/distZip/`
