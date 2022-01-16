@@ -1,8 +1,3 @@
-import com.sun.xml.internal.ws.util.xml.XmlUtil
-import groovy.xml.StreamingMarkupBuilder
-import groovy.util.slurpersupport.GPathResult
-
-import groovy.xml.DOMBuilder
 
 ext {
     output = ["$buildDir/meh.exe","$buildDir/meh64.exe"]
@@ -19,31 +14,25 @@ task clean {
 
 task adaptRcFile {
     def rcFilePath = buildDir.path + "/exe/Resources.rc"
-    def fileVersion = rootProject.version
     def myFile = new File(rcFilePath)
     doLast {
-        println "Adaptando fichero  "+rcFilePath
+        println "Adaptando fichero " + rcFilePath
         def exeVersionCommas = exeVersion.replace(".",",")
-        processFileInplace(myFile) { text ->
-            text = text.replaceAll("FILEVERSION.*1,0,0,0", "FILEVERSION "+exeVersionCommas)
-            text = text.replaceAll("PRODUCTVERSION.*1,0,0,0", "PRODUCTVERSION "+exeVersionCommas)
-            text = text.replaceAll("VALUE \"FileVersion\",.*", "VALUE \"FileVersion\", \""+exeVersion+"\\\\0\"")
-            text = text.replaceAll("VALUE \"ProductVersion\",.*", "VALUE \"ProductVersion\", \""+exeVersion+"\\\\0\"")
-        }
+        ant.replaceregexp(file: myFile,
+                match: "FILEVERSION.*1,0,0,0",
+                replace: "FILEVERSION " + exeVersionCommas)
+        ant.replaceregexp(file: myFile,
+                match: "PRODUCTVERSION.*1,0,0,0",
+                replace: "PRODUCTVERSION " + exeVersionCommas)
+        ant.replaceregexp(file: myFile,
+                match: "VALUE \"FileVersion\",.*",
+                replace: "VALUE \"FileVersion\", \"" + exeVersion + "\\\\\\\\0\"")
+        ant.replaceregexp(file: myFile,
+                match: "VALUE \"ProductVersion\",.*",
+                replace: "VALUE \"ProductVersion\", \"" + exeVersion + "\\\\\\\\0\"")
     }
 }
 adaptRcFile.dependsOn('winrun4jPrepareFiles')
-
-String serializeXml(GPathResult xml){
-    XmlUtil.serialize(new StreamingMarkupBuilder().bind {
-        mkp.yield xml
-    } )
-}
-
-def processFileInplace(file, Closure processText) {
-    def text = file.text
-    file.write(processText(text))
-}
 
 task buildExe {
     dependsOn('buildExeWinrun4j')

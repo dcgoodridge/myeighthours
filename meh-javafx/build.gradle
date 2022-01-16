@@ -62,16 +62,12 @@ task testunit(type: Test) {
     dependsOn compile
 	group 'PIPELINE'
     description '2.1 testunit'
-    testClassesDir = sourceSets.testunit.output.classesDir
-    classpath = sourceSets.testunit.runtimeClasspath
     jacoco.destinationFile = file("$buildDir/jacoco/${name}.exec")
 }
 
 task testintegration(type: Test) {
     dependsOn compile
     group 'PIPELINE'
-    testClassesDir = sourceSets.testintegration.output.classesDir
-    classpath = sourceSets.testintegration.runtimeClasspath
 }
 
 test {
